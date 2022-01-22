@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoList from './components/TodoList';
+import NewTodo from './components/NewTodo';
 
 // function App() {
 //   return (
@@ -12,6 +13,7 @@ const App: React.FC = () => {
   const todos = [{id: 't1', text: 'TypeScriptコースの完了'}];
   return (
     <div className="App">
+      <NewTodo />
       <TodoList items={todos} />
     </div>
   );
