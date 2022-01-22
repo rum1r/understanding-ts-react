@@ -1,12 +1,16 @@
 import React, { useRef } from "react";
 
-const NewTodo: React.FC = () => {
+type NewTodoProps = {
+  onAddTodo: (todoText: string) => void;
+}
+
+const NewTodo: React.FC<NewTodoProps> = props => {
   // 初期値 null
   const textInputRef = useRef<HTMLInputElement>(null);
   const todoSubmitHandler = (event: React.FormEvent) => {
     event.preventDefault();
     const enteredText = textInputRef.current!.value;
-    console.log(enteredText);
+    props.onAddTodo(enteredText);
   }
   return (
   <form onSubmit={todoSubmitHandler}>
@@ -14,6 +18,7 @@ const NewTodo: React.FC = () => {
   <label htmlFor="todo-text">Todo内容</label>
   <input type="text" id="todo-text" ref={textInputRef} />
   </div>
+  <button type="submit">TODO追加</button>
   </form>
   );
 }
